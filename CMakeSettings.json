@@ -1,0 +1,67 @@
+﻿{
+	"configurations": [
+		{
+			"name": "x64-Debug",
+			"generator": "Ninja",
+			"configurationType": "Debug",
+			"inheritEnvironments": [ "msvc_x64_x64" ],
+			"buildRoot": "${projectDir}\\out\\build\\${name}",
+			"installRoot": "${projectDir}\\out\\install\\${name}",
+			"cmakeCommandArgs": "",
+			"buildCommandArgs": "-v",
+			"ctestCommandArgs": "",
+			"variables": []
+		},
+		{
+			"name": "x86-Debug",
+			"generator": "Ninja",
+			"configurationType": "Debug",
+			"buildRoot": "${projectDir}\\out\\build\\${name}",
+			"installRoot": "${projectDir}\\out\\install\\${name}",
+			"cmakeCommandArgs": "",
+			"buildCommandArgs": "-v",
+			"ctestCommandArgs": "",
+			"inheritEnvironments": [ "msvc_x86" ],
+			"variables": []
+		},
+		{
+			"name": "ARM64-Debug",
+			"generator": "Ninja",
+			"configurationType": "Debug",
+			"buildRoot": "${projectDir}\\out\\build\\${name}",
+			"installRoot": "${projectDir}\\out\\install\\${name}",
+			"cmakeCommandArgs": "-DANDROID_ABI=arm64-v8a -DANDROID_NATIVE_API_LEVEL=android-25",
+			"buildCommandArgs": "",
+			"ctestCommandArgs": "",
+			"inheritEnvironments": [],
+			"variables": [],
+			"cmakeToolchain": "C:/Users/adamz/Downloads/ndk-bundle/build/cmake/android.toolchain.cmake",
+			"intelliSenseMode": "android-clang-arm64"
+		},
+		{
+			"name": "ARM64-Release",
+			"generator": "Ninja",
+			"configurationType": "MinSizeRel",
+			"buildRoot": "${projectDir}\\out\\build\\${name}",
+			"installRoot": "${projectDir}\\out\\install\\${name}",
+			"cmakeCommandArgs": "-DANDROID_ABI=arm64-v8a -DANDROID_NATIVE_API_LEVEL=android-25",
+			"buildCommandArgs": "",
+			"ctestCommandArgs": "",
+			"cmakeToolchain": "C:/Users/adamz/Downloads/ndk-bundle/build/cmake/android.toolchain.cmake",
+			"inheritEnvironments": [],
+			"variables": [
+				{
+					"name": "CMAKE_C_STANDARD_LIBRARIES",
+					"value": "",
+					"type": "STRING"
+				},
+				{
+					"name": "CMAKE_CXX_STANDARD_LIBRARIES",
+					"value": "",
+					"type": "STRING"
+				}
+			],
+			"intelliSenseMode": "android-clang-arm64"
+		}
+	]
+}
