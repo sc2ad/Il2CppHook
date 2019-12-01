@@ -4,5 +4,8 @@
 #pragma once
 
 #include <iostream>
+#include "And64InlineHook.hpp"
+#include "utils.h"
+#include "logging.h"
 
 // TODO: Reference additional headers your program requires here.
