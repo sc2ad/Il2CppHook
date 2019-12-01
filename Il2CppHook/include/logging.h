@@ -1,11 +1,14 @@
 #pragma once
 
-#include <android/log.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
 #include <unistd.h>
 
+#ifdef _Windows
+
+#else
+#include <android/log.h>
 enum LOG_VERBOSE_TYPE {
 	CRITICAL = ANDROID_LOG_FATAL,
 	ERROR = ANDROID_LOG_ERROR,
@@ -13,6 +16,9 @@ enum LOG_VERBOSE_TYPE {
 	INFO = ANDROID_LOG_INFO,
 	DEBUG = ANDROID_LOG_DEBUG
 };
+#define log_base(lvl, ...) __android_log_print(lvl, TAG, __VA_ARGS__)
+#define log_vbase(lvl, ...) __android_log_vprint(lvl, TAG, __VA_ARGS__)
+#endif
 
 #ifndef MOD_ID
 // This is too annoying, let's change it to default to some stupid stuff
@@ -28,9 +34,6 @@ enum LOG_VERBOSE_TYPE {
 #define TAG "QuestHook[" MOD_ID "|" VERSION "]"
 
 namespace logging {
-#define log_base(lvl, ...) __android_log_print(lvl, TAG, __VA_ARGS__)
-#define log_vbase(lvl, ...) __android_log_vprint(lvl, TAG, __VA_ARGS__)
-
 	static int log(LOG_VERBOSE_TYPE level, const char* fmt, va_list args) {
 		return log_vbase(level, fmt, args);
 	}
@@ -59,7 +62,7 @@ static void* thread_func(void*)
 	while ((rdsz = read(pfd[0], buf, sizeof buf - 1)) > 0) {
 		if (buf[rdsz - 1] == '\n') --rdsz;
 		buf[rdsz] = 0;  /* add null-terminator */
-		__android_log_write(ANDROID_LOG_INFO, TAG, buf);
+		log_base(INFO, TAG, buf);
 	}
 	return 0;
 }

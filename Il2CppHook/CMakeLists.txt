@@ -8,7 +8,7 @@ add_executable (Il2CppHook "src/Il2CppHook.cpp" "include/Il2CppHook.h")
 
 add_library ("il2cpp-hook" SHARED "src/Il2CppHook.cpp" "src/utils/utils.cpp")
 
-include_directories("include/")
+include_directories("include/" "~/Downloads/ndk-bundle/")
 find_library(log-lib, log)
 
 target_link_libraries("il2cpp-hook" ${log-lib})

@@ -44,7 +44,7 @@
 			"configurationType": "MinSizeRel",
 			"buildRoot": "${projectDir}\\out\\build\\${name}",
 			"installRoot": "${projectDir}\\out\\install\\${name}",
-			"cmakeCommandArgs": "-DANDROID_ABI=arm64-v8a -DANDROID_NATIVE_API_LEVEL=android-25 -D__aarch64__=true",
+			"cmakeCommandArgs": "-DANDROID_ABI=arm64-v8a -DANDROID_NATIVE_API_LEVEL=android-25 -D__aarch64__=true -DENABLE_PRECOMPILED_HEADERS=OFF",
 			"buildCommandArgs": "",
 			"ctestCommandArgs": "",
 			"cmakeToolchain": "C:/Users/adamz/Downloads/ndk-bundle/build/cmake/android.toolchain.cmake",
@@ -58,6 +58,11 @@
 				{
 					"name": "CMAKE_CXX_STANDARD_LIBRARIES",
 					"value": "",
+					"type": "STRING"
+				},
+				{
+					"name": "CMAKE_EXE_LINKER_FLAGS_MINSIZEREL",
+					"value": "-v",
 					"type": "STRING"
 				}
 			],

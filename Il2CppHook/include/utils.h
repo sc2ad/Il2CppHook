@@ -10,6 +10,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
+	static const char* IL2CPP_SO_PATH = "/data/app/com.cloudheadgames.pistolwhip-1/lib/arm64/libil2cpp.so";
 
 	long long getRealOffset(void* offset);
 	long long baseAddr(const char* soname);

@@ -77,20 +77,9 @@ long long getRealOffset(void* offset) // calculate dump.cs address + lib.so base
 	if (location == 0)
 	{
 		//arm
-#ifndef IL2CPP_SO_PATH
-#error "IL2CPP_SO_PATH MUST BE DEFINED!"
-#endif
 		location = baseAddr(IL2CPP_SO_PATH); // replace the com.package.name with the package name of the app you are modding.
 	}
 	return location + (long long)offset;
-}
-
-void setcsstr(Il2CppString* in, u16string_view str) {
-	in->length = str.length();
-	for (int i = 0; i < in->length; i++) {
-		// Can assume that each char is only a single char (a single word --> double word)
-		in->chars[i] = str[i];
-	}
 }
 
 string to_utf8(u16string_view view) {
@@ -109,11 +98,6 @@ u16string to_utf16(string_view view) {
 		});
 	dat[view.length()] = '\0';
 	return { dat };
-}
-
-u16string_view csstrtostr(Il2CppString* in)
-{
-	return { in->chars, static_cast<uint32_t>(in->length) };
 }
 
 void dump(int before, int after, void* ptr) {
